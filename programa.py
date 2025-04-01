@@ -1,5 +1,6 @@
 from os import system
 from random import randrange
+
 class Nodo:
     def __init__(self, dato=None, siguiente=None):
         self.dato = dato
@@ -18,8 +19,16 @@ class LSE:
         self.primero = None
         self.ultimo = None
     
+    def __del__(self):
+        self.liberaMemoria()
+    
     def estaVacia(self):
         return self.primero ==  None and self.ultimo == None
+    
+    def liberaMemoria(self):
+        while not self.estaVacia():
+            x = self.eliminaAlInicio()
+            print(f'Se elimina {x}')
 
     def insertaAlInicio(self, dato):
         if self.estaVacia():
@@ -52,23 +61,39 @@ class LSE:
         return False
 
     def eliminaAlInicio(self):
-        aux = self.primero
-        x = aux.dato
-        self.primero = self.primero.siguiente
-        del aux
+        if self.estaVacia():
+            return None
+        elif self.primero==self.ultimo:
+            x = self.primero.dato
+            del self.primero
+            self.primero=None
+            self.ultimo=None
+        else:
+            aux = self.primero
+            x = aux.dato
+            self.primero = self.primero.siguiente
+            del aux
         return x
 
     def eliminaAlFinal(self):
-        aux = self.primero
-        x = self.ultimo.dato
-        
-        aux = self.primero
-        while aux.siguiente != self.ultimo:
-            aux = aux.siguiente
+        if self.estaVacia():
+            return None
+        elif self.primero==self.ultimo:
+            x = self.ultimo.dato
+            del self.ultimo
+            self.ultimo=None
+            self.primero=None
+        else:
+            aux = self.primero
+            x = self.ultimo.dato
+            
+            aux = self.primero
+            while aux.siguiente != self.ultimo:
+                aux = aux.siguiente
 
-        del self.ultimo
-        self.ultimo = aux
-        self.ultimo.siguiente = None
+            del self.ultimo
+            self.ultimo = aux
+            self.ultimo.siguiente = None
         return x
 
     def elimina(self, dato):
@@ -120,12 +145,5 @@ if __name__ == '__main__':
         L.inserta(x)
 
     L.muestra()
-    print()
+    print('\n\nFin del programa\n\n')
 
-    cont = 0
-    aux = L.primero
-    while aux != None:
-        cont = cont+1
-        aux = aux.siguiente
-
-    print(f'¿{n} == {cont}?')
