@@ -149,58 +149,51 @@ class LSE:
 
         return L3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     system('cls')
 
     L1 = LSE()
     L2 = LSE()
+    L3 = LSE()
 
     n = randrange(3, 6)
     for i in range(n):
         x = randrange(101)
-        L1.insertaAlInicio(x)
+        print(f'Se inserta {x}')
+        L1.inserta(x)
+    print()
+
+    n = randrange(3, 6)
+    for i in range(n):
+        x = randrange(101)
+        print(f'Se inserta {x}')
+        L2.inserta(x)
+    print()
+
+    aux1 = L1.primero
+    aux2 = L2.primero
+    
+    while aux1!=None and aux2!=None:
+        if aux1.dato <= aux2.dato:
+            L3.insertaAlFinal(aux1.dato)
+            aux1=aux1.siguiente
+        else:
+            L3.insertaAlFinal(aux2.dato)
+            aux2=aux2.siguiente
+
+    while aux1!=None:
+        L3.insertaAlFinal(aux1.dato)
+        aux1=aux1.siguiente
+
+    while aux2!=None:
+        L3.insertaAlFinal(aux2.dato)
+        aux2=aux2.siguiente
 
     L1.muestra()
     print()
 
-    n = randrange(3, 6)
-    for i in range(n):
-        x = randrange(101)
-        L2.insertaAlInicio(x)
-
     L2.muestra()
     print()
-
-    L3 = L1.concatena(L2)
 
     L3.muestra()
     print()
