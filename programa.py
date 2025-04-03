@@ -138,6 +138,42 @@ class LSE:
 
 
 
+def concatena(L1, L2):
+    L3 = LSE()
+    aux = L1.primero
+    while aux!=None:
+        L3.insertaAlFinal(aux.dato)
+        aux = aux.siguiente
+
+    aux = L2.primero
+    while aux!=None:
+        L3.insertaAlFinal(aux.dato)
+        aux = aux.siguiente
+
+    return L3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -147,7 +183,6 @@ if __name__ == '__main__':
 
     L1 = LSE()
     L2 = LSE()
-    L3 = LSE()
 
     n = randrange(3, 6)
     for i in range(n):
@@ -165,15 +200,7 @@ if __name__ == '__main__':
     L2.muestra()
     print()
 
-    aux = L1.primero
-    while aux!=None:
-        L3.insertaAlFinal(aux.dato)
-        aux = aux.siguiente
-
-    aux = L2.primero
-    while aux!=None:
-        L3.insertaAlFinal(aux.dato)
-        aux = aux.siguiente
+    L3 = concatena(L1, L2)
 
     L3.muestra()
     print()
