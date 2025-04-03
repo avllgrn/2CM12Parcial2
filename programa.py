@@ -149,27 +149,8 @@ class LSE:
 
         return L3
 
-if __name__ == '__main__':
-    system('cls')
-
-    L1 = LSE()
-    L2 = LSE()
+def uneOrdenadamente(L1, L2):
     L3 = LSE()
-
-    n = randrange(3, 6)
-    for i in range(n):
-        x = randrange(101)
-        print(f'Se inserta {x}')
-        L1.inserta(x)
-    print()
-
-    n = randrange(3, 6)
-    for i in range(n):
-        x = randrange(101)
-        print(f'Se inserta {x}')
-        L2.inserta(x)
-    print()
-
     aux1 = L1.primero
     aux2 = L2.primero
     
@@ -188,6 +169,30 @@ if __name__ == '__main__':
     while aux2!=None:
         L3.insertaAlFinal(aux2.dato)
         aux2=aux2.siguiente
+
+    return L3
+
+if __name__ == '__main__':
+    system('cls')
+
+    L1 = LSE()
+    L2 = LSE()
+
+    n = randrange(3, 6)
+    for i in range(n):
+        x = randrange(101)
+        print(f'Se inserta {x}')
+        L1.inserta(x)
+    print()
+
+    n = randrange(3, 6)
+    for i in range(n):
+        x = randrange(101)
+        print(f'Se inserta {x}')
+        L2.inserta(x)
+    print()
+
+    L3 = uneOrdenadamente(L1, L2)
 
     L1.muestra()
     print()
