@@ -28,7 +28,7 @@ class LSE:
     def liberaMemoria(self):
         while not self.estaVacia():
             x = self.eliminaAlInicio()
-            print(f'Se elimina {x}')
+            #print(f'Se elimina {x}')
 
     def insertaAlInicio(self, dato):
         if self.estaVacia():
@@ -135,15 +135,45 @@ class LSE:
 
             aux1.siguiente = Nodo(dato, aux2)
 
+
+
+
+
+
+
+
 if __name__ == '__main__':
     system('cls')
 
-    L = LSE()
-    n = randrange(11)
+    L1 = LSE()
+    L2 = LSE()
+    L3 = LSE()
+
+    n = randrange(3, 6)
     for i in range(n):
         x = randrange(101)
-        L.inserta(x)
+        L1.insertaAlInicio(x)
 
-    L.muestra()
-    print('\n\nFin del programa\n\n')
+    L1.muestra()
+    print()
 
+    n = randrange(3, 6)
+    for i in range(n):
+        x = randrange(101)
+        L2.insertaAlInicio(x)
+
+    L2.muestra()
+    print()
+
+    aux = L1.primero
+    while aux!=None:
+        L3.insertaAlFinal(aux.dato)
+        aux = aux.siguiente
+
+    aux = L2.primero
+    while aux!=None:
+        L3.insertaAlFinal(aux.dato)
+        aux = aux.siguiente
+
+    L3.muestra()
+    print()
