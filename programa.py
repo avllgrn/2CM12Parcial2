@@ -185,7 +185,15 @@ class LSE:
             aux2=aux2.siguiente
 
         return L3
-
+    
+def copia(Origen, Destino):
+    Destino.liberaMemoria()
+    aux = Origen.primero
+    while aux!=None:
+        Destino.insertaAlFinal(aux.dato)
+        aux=aux.siguiente
+    
+    return Destino
 if __name__ == '__main__':
     system('cls')
 
@@ -195,10 +203,8 @@ if __name__ == '__main__':
     Original.generaListaDesordenada(randrange(11))
     print()
 
-    aux = Original.primero
-    while aux!=None:
-        Copia.insertaAlFinal(aux.dato)
-        aux=aux.siguiente
+    copia(Original, Copia)
+    copia(Original, Copia)
 
     print('Original -> ',end='')
     Original.muestra()
