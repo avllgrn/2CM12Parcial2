@@ -30,6 +30,20 @@ class LSE:
             x = self.eliminaAlInicio()
             #print(f'Se elimina {x}')
 
+    def generaListaOrdenada(self, n):
+        self.liberaMemoria()
+        for i in range(n):
+            x = randrange(101)
+            #print(f'Se inserta {x}')
+            self.inserta(x)
+
+    def generaListaDesordenada(self, n):
+        self.liberaMemoria()
+        for i in range(n):
+            x = randrange(101)
+            #print(f'Se inserta {x}')
+            self.insertaAlFinal(x)
+
     def insertaAlInicio(self, dato):
         if self.estaVacia():
             self.primero = Nodo(dato, None)
@@ -175,30 +189,30 @@ class LSE:
 if __name__ == '__main__':
     system('cls')
 
-    L1 = LSE()
-    L2 = LSE()
+    Original = LSE()
+    Copia = LSE()
 
-    n = randrange(3, 6)
-    for i in range(n):
-        x = randrange(101)
-        print(f'Se inserta {x}')
-        L1.inserta(x)
+    Original.generaListaDesordenada(randrange(11))
     print()
 
-    n = randrange(3, 6)
-    for i in range(n):
-        x = randrange(101)
-        print(f'Se inserta {x}')
-        L2.inserta(x)
-    print()
+    aux = Original.primero
+    while aux!=None:
+        Copia.insertaAlFinal(aux.dato)
+        aux=aux.siguiente
 
-    L3 = L1.uneOrdenadamente(L2)
-
-    L1.muestra()
+    print('Original -> ',end='')
+    Original.muestra()
     print()
+    print('   Copia -> ',end='')
+    Copia.muestra()
+    print('\n')
 
-    L2.muestra()
-    print()
+    Copia.eliminaAlFinal()
 
-    L3.muestra()
+    print('Original -> ',end='')
+    Original.muestra()
     print()
+    print('   Copia -> ',end='')
+    Copia.muestra()
+    print('\n')
+    
