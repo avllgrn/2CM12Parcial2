@@ -210,6 +210,15 @@ class LSE:
 
             print(f'| {auxU.dato} |', end=' ')
 
+def generaInvertida(L):
+    I = LSE()
+    aux = L.primero
+    while aux!=None:
+        I.insertaAlInicio(aux.dato)
+        aux=aux.siguiente
+    
+    return I
+
 if __name__ == '__main__':
     system('cls')
 
@@ -218,11 +227,7 @@ if __name__ == '__main__':
     L.generaListaDesordenada(randrange(11))
     print()
 
-    I = LSE()
-    aux = L.primero
-    while aux!=None:
-        I.insertaAlInicio(aux.dato)
-        aux=aux.siguiente
+    I = generaInvertida(L)
 
     print('L -> ',end='')
     L.muestra()
