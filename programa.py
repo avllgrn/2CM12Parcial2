@@ -218,9 +218,15 @@ if __name__ == '__main__':
     L.generaListaDesordenada(randrange(11))
     print()
 
+    I = LSE()
+    aux = L.primero
+    while aux!=None:
+        I.insertaAlInicio(aux.dato)
+        aux=aux.siguiente
+
     print('L -> ',end='')
     L.muestra()
     print('\n')
 
-    print('L -> ',end='')
-    L.muestraInvertida()
+    print('I -> ',end='')
+    I.muestra()
