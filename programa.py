@@ -198,28 +198,27 @@ class LSE:
 if __name__ == '__main__':
     system('cls')
 
-    Original = LSE()
-    Copia = LSE()
+    L = LSE()
 
-    Original.generaListaDesordenada(randrange(11))
+    L.generaListaDesordenada(randrange(11))
     print()
 
-    Original.copia(Copia)
-    Original.copia(Copia)
-
-    print('Original -> ',end='')
-    Original.muestra()
-    print()
-    print('   Copia -> ',end='')
-    Copia.muestra()
+    print('L -> ',end='')
+    L.muestra()
     print('\n')
 
-    Copia.eliminaAlFinal()
+    print('L -> ',end='')
+    if not L.estaVacia():
+        auxP = L.primero
+        auxU = L.ultimo
+        while auxU != auxP:
+            print(f'| {auxU.dato} | <-', end=' ')
 
-    print('Original -> ',end='')
-    Original.muestra()
-    print()
-    print('   Copia -> ',end='')
-    Copia.muestra()
-    print('\n')
-    
+            while auxP.siguiente!=auxU:
+                auxP = auxP.siguiente
+
+            auxU = auxP
+            auxP = L.primero
+
+
+        print(f'| {auxU.dato} |', end=' ')
