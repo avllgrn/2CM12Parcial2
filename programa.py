@@ -195,20 +195,20 @@ class LSE:
     
         return Destino
     
-def muestraInvertida(L):
-    if not L.estaVacia():
-        auxP = L.primero
-        auxU = L.ultimo
-        while auxU != auxP:
-            print(f'| {auxU.dato} | <-', end=' ')
+    def muestraInvertida(self):
+        if not self.estaVacia():
+            auxP = self.primero
+            auxU = self.ultimo
+            while auxU != auxP:
+                print(f'| {auxU.dato} | <-', end=' ')
 
-            while auxP.siguiente!=auxU:
-                auxP = auxP.siguiente
+                while auxP.siguiente!=auxU:
+                    auxP = auxP.siguiente
 
-            auxU = auxP
-            auxP = L.primero
+                auxU = auxP
+                auxP = self.primero
 
-        print(f'| {auxU.dato} |', end=' ')
+            print(f'| {auxU.dato} |', end=' ')
 
 if __name__ == '__main__':
     system('cls')
@@ -223,4 +223,4 @@ if __name__ == '__main__':
     print('\n')
 
     print('L -> ',end='')
-    muestraInvertida(L)
+    L.muestraInvertida()
